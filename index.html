@@ -16,6 +16,7 @@
             --card-bg: rgba(28, 28, 30, 0.6);
             --text-main: #ffffff;
             --text-sub: #a1a1a6;
+            --android-green: #3DDC84; /* Yeni Android Yeşili */
         }
 
         body {
@@ -86,7 +87,7 @@
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
-            box-sizing: border-box; /* Padding taşmasını engeller */
+            box-sizing: border-box; 
         }
 
         .store-btn svg {
@@ -97,17 +98,23 @@
             flex-shrink: 0;
         }
 
+        /* iOS Buton Stili */
         .btn-ios {
             background-color: #ffffff;
             color: #000000;
         }
         .btn-ios:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.25); }
 
+        /* Android Buton Stili - YENİLENDİ */
         .btn-android {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
+            background-color: var(--android-green); /* Yeşil renk */
+            color: #ffffff; /* Beyaz yazı */
+            border: none; /* Kenarlık kaldırıldı */
         }
-        .btn-android:hover { background-color: rgba(255, 255, 255, 0.2); transform: scale(1.02); }
+        .btn-android svg {
+            fill: #ffffff; /* İkon rengi beyaz */
+        }
+        .btn-android:hover { background-color: #34c779; transform: scale(1.02); box-shadow: 0 0 20px rgba(61, 220, 132, 0.4); }
 
         .footer {
             margin-top: 30px;
