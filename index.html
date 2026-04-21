@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,16 +55,16 @@
 
 <div class="container">
     <div id="loading-ui">
-        <h1>MedCase Yükleniyor...</h1>
+        <h1>Loading MedCase...</h1>
         <div class="loader"></div>
-        <p>Mağazaya yönlendiriliyorsunuz.</p>
+        <p>Redirecting you to the store.</p>
     </div>
     
     <div id="manual-ui" style="display:none;">
-        <h1>MedCase'i İndir</h1>
-        <p>Lütfen cihazınıza uygun mağazayı seçin:</p>
-        <a id="ios-btn" class="btn" style="display:block; margin-bottom:10px; background-color: #000;">App Store'dan İndir</a>
-        <a id="android-btn" class="btn" style="display:block; background-color: #3DDC84; color: #000;">Google Play'den İndir</a>
+        <h1>Download MedCase</h1>
+        <p>Please select the store for your device:</p>
+        <a id="ios-btn" class="btn" style="display:block; margin-bottom:10px; background-color: #000;">Download on the App Store</a>
+        <a id="android-btn" class="btn" style="display:block; background-color: #3DDC84; color: #000;">Get it on Google Play</a>
     </div>
 </div>
 
@@ -75,15 +75,15 @@
     function redirect() {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        // iOS Kontrolü
+        // iOS Check
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
             window.location.href = APP_STORE_URL;
         } 
-        // Android Kontrolü
+        // Android Check
         else if (/android/i.test(userAgent)) {
             window.location.href = GOOGLE_PLAY_URL;
         } 
-        // Masaüstü veya bilinmeyen cihazlar için butonları göster
+        // Show buttons for desktop or unknown devices
         else {
             document.getElementById('loading-ui').style.display = 'none';
             document.getElementById('manual-ui').style.display = 'block';
@@ -92,10 +92,10 @@
         }
     }
 
-    // Sayfa yüklendiğinde yönlendirmeyi başlat
+    // Start redirection when the page loads
     window.onload = redirect;
 
-    // 3 saniye sonra hala yönlenmediyse butonları göster (Fail-safe)
+    // Show buttons if not redirected after 3 seconds (Fail-safe)
     setTimeout(() => {
         document.getElementById('loading-ui').style.display = 'none';
         document.getElementById('manual-ui').style.display = 'block';
